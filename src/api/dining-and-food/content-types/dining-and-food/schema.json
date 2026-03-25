@@ -1,0 +1,75 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dining_and_foods",
+  "info": {
+    "singularName": "dining-and-food",
+    "pluralName": "dining-and-foods",
+    "displayName": "Dining & Food"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "location": {
+      "type": "string"
+    },
+    "coordinates": {
+      "type": "json"
+    },
+    "cuisine_type": {
+      "type": "enumeration",
+      "enum": [
+        "local",
+        "international",
+        "fusion",
+        "cafe",
+        "food_stall"
+      ]
+    },
+    "price_range": {
+      "type": "enumeration",
+      "enum": [
+        "budget",
+        "moderate",
+        "expensive"
+      ]
+    },
+    "contact_number": {
+      "type": "string"
+    },
+    "opening_hours": {
+      "type": "string"
+    },
+    "rating": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "photos": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "place_type": {
+      "type": "string",
+      "default": "dining"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    }
+  }
+}

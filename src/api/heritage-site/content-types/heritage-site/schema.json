@@ -1,0 +1,85 @@
+{
+  "kind": "collectionType",
+  "collectionName": "heritage_sites",
+  "info": {
+    "singularName": "heritage-site",
+    "pluralName": "heritage-sites",
+    "displayName": "Heritage Site"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "history": {
+      "type": "blocks"
+    },
+    "location": {
+      "type": "string"
+    },
+    "place_type": {
+      "type": "enumeration",
+      "enum": [
+        "heritage_site",
+        "landmark",
+        "museum"
+      ]
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "tangible",
+        "intangible"
+      ]
+    },
+    "distance_from_center": {
+      "type": "string",
+      "default": "e.g., \"2.5 km from town center\""
+    },
+    "coordinates": {
+      "type": "json"
+    },
+    "rating": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "photos": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "is_featured": {
+      "type": "boolean"
+    },
+    "virtual_tour": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "has_virtual_tour": {
+      "type": "boolean"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "kind": "collectionType",
+  "collectionName": "accommodations",
+  "info": {
+    "singularName": "accommodation",
+    "pluralName": "accommodations",
+    "displayName": "Accommodation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "location": {
+      "type": "string"
+    },
+    "coordinates": {
+      "type": "json"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "hotel",
+        "resort",
+        "inn",
+        "homestay",
+        "villa"
+      ]
+    },
+    "price_per_night": {
+      "type": "string"
+    },
+    "contact_number": {
+      "type": "string"
+    },
+    "opening_hours": {
+      "type": "string",
+      "default": "24/7 or check-in times"
+    },
+    "rating": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "amenities": {
+      "type": "string",
+      "default": "comma-separated"
+    },
+    "photos": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "place_type": {
+      "type": "string",
+      "default": "accommodation"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    }
+  }
+}

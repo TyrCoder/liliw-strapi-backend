@@ -1,0 +1,100 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tourist_spots",
+  "info": {
+    "singularName": "tourist-spot",
+    "pluralName": "tourist-spots",
+    "displayName": "Tourist Spot"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "tips": {
+      "type": "blocks"
+    },
+    "best_time_to_visit": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "rating": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "difficulty_level": {
+      "type": "enumeration",
+      "enum": [
+        "easy",
+        "moderate",
+        "difficult"
+      ]
+    },
+    "coordinates": {
+      "type": "json"
+    },
+    "photos": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "has_virtual_tour": {
+      "type": "boolean"
+    },
+    "entrance_fee": {
+      "type": "string"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "nature",
+        "historical",
+        "farm",
+        "food",
+        "shopping"
+      ]
+    },
+    "opening_hours": {
+      "type": "string"
+    },
+    "virtual_tour": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "place_type": {
+      "type": "enumeration",
+      "enum": [
+        "natural",
+        "historical",
+        "shopping",
+        "food",
+        "recreation"
+      ]
+    }
+  }
+}

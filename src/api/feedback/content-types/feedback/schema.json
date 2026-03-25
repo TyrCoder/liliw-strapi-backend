@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "feedbacks",
+  "info": {
+    "singularName": "feedback",
+    "pluralName": "feedbacks",
+    "displayName": "Feedback"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tourist_name": {
+      "type": "string"
+    },
+    "rating": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "review": {
+      "type": "text"
+    },
+    "spot_name": {
+      "type": "string"
+    },
+    "visit_date": {
+      "type": "string"
+    }
+  }
+}
