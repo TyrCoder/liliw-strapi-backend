@@ -1,0 +1,17 @@
+# Render deployment configuration for Strapi backend
+services:
+  - type: web
+    name: liliw-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm run develop
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_CLIENT
+        value: postgres
+      - key: DATABASE_SSL
+        value: "true"
+      - key: PORT
+        value: 1337
