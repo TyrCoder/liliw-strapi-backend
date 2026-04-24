@@ -1,0 +1,9 @@
+{
+  "build": {
+    "builder": "nixpacks",
+    "config": {
+      "nixPackages": ["pkgconfig", "python311"],
+      "buildCmd": "npm run build"
+    }
+  }
+}
