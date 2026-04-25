@@ -35,7 +35,5 @@
   "strapi": {
     "uuid": "c94f23a6-f736-45cc-a956-a5e45c1e285b",
     "installId": "ead949187d52743f97e1492bec8178679e502843e87e95dd686ef6c32b2d46c6"
-  },
-  "devDependencies": {
   }
 }
