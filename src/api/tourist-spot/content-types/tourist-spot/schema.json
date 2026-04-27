@@ -43,6 +43,9 @@
     "coordinates": {
       "type": "json"
     },
+    "google_place_id": {
+      "type": "string"
+    },
     "photos": {
       "type": "media",
       "multiple": true,

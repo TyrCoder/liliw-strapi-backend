@@ -24,6 +24,9 @@
     "coordinates": {
       "type": "json"
     },
+    "google_place_id": {
+      "type": "string"
+    },
     "cuisine_type": {
       "type": "enumeration",
       "enum": [

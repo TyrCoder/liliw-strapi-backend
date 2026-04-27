@@ -74,6 +74,36 @@ function normalizeValue(value, dataType) {
   return value;
 }
 
+async function resetIdSequences(pool) {
+  const seqColumnsRes = await pool.query(`
+    SELECT
+      table_name,
+      column_name,
+      pg_get_serial_sequence(format('%I.%I', table_schema, table_name), column_name) AS sequence_name
+    FROM information_schema.columns
+    WHERE table_schema = 'public'
+      AND column_name = 'id'
+      AND (
+        column_default LIKE 'nextval(%'
+        OR is_identity = 'YES'
+      )
+  `);
+
+  for (const row of seqColumnsRes.rows) {
+    const tableName = row.table_name;
+    const columnName = row.column_name;
+    const sequenceName = row.sequence_name;
+
+    if (!sequenceName) continue;
+
+    // Set the sequence to MAX(id) + 1 so the next insert always gets a free PK.
+    await pool.query(
+      `SELECT setval($1::regclass, COALESCE((SELECT MAX(${quoteIdent(columnName)}) FROM ${quoteIdent(tableName)}), 0) + 1, false)`,
+      [sequenceName]
+    );
+  }
+}
+
 async function migrate() {
   try {
     console.log(`📥 Opening SQLite database: ${SQLITE_PATH}`);
@@ -154,6 +184,10 @@ async function migrate() {
         console.error(`    ❌ Error migrating ${tableName}: ${err.message}`);
       }
     }
+
+    console.log('\n🔧 Resetting PostgreSQL ID sequences...');
+    await resetIdSequences(pool);
+    console.log('✅ ID sequences are aligned with migrated data');
 
     sqlite.close();
     await pool.end();
