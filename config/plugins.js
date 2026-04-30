@@ -17,6 +17,7 @@ module.exports = ({ env }) => {
           cloud_name: cloudinaryName,
           api_key: cloudinaryKey,
           api_secret: cloudinarySecret,
+          timeout: 600000, // 10 minutes — needed for large panoramic uploads on Render free tier
         },
         actionOptions: {
           upload: {},
