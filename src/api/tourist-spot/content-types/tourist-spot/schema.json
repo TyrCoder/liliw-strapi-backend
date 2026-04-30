@@ -101,6 +101,9 @@
     },
     "hotspots": {
       "type": "json"
+    },
+    "virtual_tour_photos": {
+      "type": "json"
     }
   }
 }
