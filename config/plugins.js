@@ -18,6 +18,16 @@ module.exports = ({ env }) => ({
           maxFileSize: 100 * 1024 * 1024, // 100MB
         },
       },
+      // Security configuration for file uploads
+      breakpoints: {
+        xlarge: 1920,
+        large: 1000,
+        medium: 750,
+        small: 500,
+        xsmall: 64,
+      },
+      formats: ['image/webp', 'image/jpeg', 'image/png'],
+      responsiveDimensions: true,
     },
   },
 });
