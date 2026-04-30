@@ -70,6 +70,9 @@
       "type": "string",
       "default": "dining"
     },
+    "has_virtual_tour": {
+      "type": "boolean"
+    },
     "slug": {
       "type": "uid",
       "targetField": "name"
