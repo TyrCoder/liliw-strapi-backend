@@ -76,6 +76,9 @@
     "slug": {
       "type": "uid",
       "targetField": "name"
+    },
+    "hotspots": {
+      "type": "json"
     }
   }
 }

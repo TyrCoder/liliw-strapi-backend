@@ -98,6 +98,9 @@
         "food",
         "recreation"
       ]
+    },
+    "hotspots": {
+      "type": "json"
     }
   }
 }
