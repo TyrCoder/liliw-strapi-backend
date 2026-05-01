@@ -13,12 +13,6 @@ const LILIW_ATTRACTIONS = [
     collection: 'api::heritage-site.heritage-site',
   },
   {
-    name: 'St. John the Baptist Parish Church',
-    google_place_id: 'ChIJMQXaWpzOkzMRWvlK5lK9VW8',
-    coordinates: { latitude: 14.3089, longitude: 121.2289 },
-    collection: 'api::heritage-site.heritage-site',
-  },
-  {
     name: 'Pila Church',
     google_place_id: 'ChIJ-wFrE3POkzMRX5KL8L9JJK0',
     coordinates: { latitude: 14.3333, longitude: 121.2833 },
