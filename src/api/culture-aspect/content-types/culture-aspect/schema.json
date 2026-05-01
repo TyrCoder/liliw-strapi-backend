@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "culture_aspects",
+  "info": {
+    "singularName": "culture-aspect",
+    "pluralName": "culture-aspects",
+    "displayName": "Culture Aspect",
+    "description": "Cultural aspects and traditions of Liliw"
+  },
+  "options": { "draftAndPublish": true },
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "description": { "type": "text" },
+    "icon_emoji": { "type": "string" },
+    "details": { "type": "json" },
+    "sort_order": { "type": "integer", "default": 0 },
+    "image": { "type": "media", "multiple": false, "allowedTypes": ["images"] }
+  }
+}

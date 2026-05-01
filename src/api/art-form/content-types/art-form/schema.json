@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "art_forms",
+  "info": {
+    "singularName": "art-form",
+    "pluralName": "art-forms",
+    "displayName": "Art Form",
+    "description": "Arts and crafts of Liliw"
+  },
+  "options": { "draftAndPublish": true },
+  "attributes": {
+    "name": { "type": "string", "required": true },
+    "description": { "type": "text" },
+    "icon_emoji": { "type": "string" },
+    "features": { "type": "json" },
+    "sort_order": { "type": "integer", "default": 0 },
+    "image": { "type": "media", "multiple": false, "allowedTypes": ["images"] }
+  }
+}

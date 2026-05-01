@@ -45,6 +45,19 @@
     "slug": {
       "type": "uid",
       "targetField": "title"
+    },
+    "difficulty": {
+      "type": "enumeration",
+      "enum": ["easy", "moderate", "difficult"]
+    },
+    "highlights": {
+      "type": "json"
+    },
+    "price": {
+      "type": "integer"
+    },
+    "max_participants": {
+      "type": "integer"
     }
   }
 }

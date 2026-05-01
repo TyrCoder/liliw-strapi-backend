@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hero_slides",
+  "info": {
+    "singularName": "hero-slide",
+    "pluralName": "hero-slides",
+    "displayName": "Hero Slide",
+    "description": "Homepage hero carousel slides"
+  },
+  "options": { "draftAndPublish": true },
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "subtitle": { "type": "string" },
+    "cta_text": { "type": "string" },
+    "cta_link": { "type": "string" },
+    "image": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
+    "sort_order": { "type": "integer", "default": 0 },
+    "is_active": { "type": "boolean", "default": true }
+  }
+}
