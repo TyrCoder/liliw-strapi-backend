@@ -35,12 +35,13 @@
     "cover_photo": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "allowedTypes": ["images"]
+    },
+    "photos": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images"],
+      "description": "Gallery photos highlighting locations visited in this itinerary"
     },
     "slug": {
       "type": "uid",
@@ -52,6 +53,17 @@
     },
     "highlights": {
       "type": "json"
+    },
+    "included": {
+      "type": "json",
+      "description": "List of what is included (strings array)"
+    },
+    "not_included": {
+      "type": "json",
+      "description": "List of what is NOT included (strings array)"
+    },
+    "meeting_point": {
+      "type": "string"
     },
     "price": {
       "type": "integer"
