@@ -1,3 +1,3 @@
 'use strict';
 const { createCoreService } = require('@strapi/strapi').factories;
-module.exports = createCoreService('api::hero.slide');
+module.exports = createCoreService('api::hero-slide.hero-slide');

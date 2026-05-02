@@ -1,3 +1,3 @@
 'use strict';
 const { createCoreController } = require('@strapi/strapi').factories;
-module.exports = createCoreController('api::culture.aspect');
+module.exports = createCoreController('api::culture-aspect.culture-aspect');
