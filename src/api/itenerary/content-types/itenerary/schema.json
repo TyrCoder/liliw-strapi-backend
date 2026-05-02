@@ -30,7 +30,7 @@
       "type": "blocks"
     },
     "stops": {
-      "type": "json"
+      "type": "blocks"
     },
     "highlights": {
       "type": "json"
