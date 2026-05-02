@@ -4,7 +4,7 @@
   "info": {
     "singularName": "itenerary",
     "pluralName": "iteneraries",
-    "displayName": "Itenerary"
+    "displayName": "Itinerary"
   },
   "options": {
     "draftAndPublish": true
@@ -32,44 +32,49 @@
     "stops": {
       "type": "json"
     },
-    "cover_photo": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": ["images"]
-    },
-    "photos": {
-      "type": "media",
-      "multiple": true,
-      "allowedTypes": ["images"],
-      "description": "Gallery photos highlighting locations visited in this itinerary"
-    },
-    "slug": {
-      "type": "uid",
-      "targetField": "title"
-    },
-    "difficulty": {
-      "type": "enumeration",
-      "enum": ["easy", "moderate", "difficult"]
-    },
     "highlights": {
       "type": "json"
     },
     "included": {
-      "type": "json",
-      "description": "List of what is included (strings array)"
+      "type": "json"
     },
     "not_included": {
-      "type": "json",
-      "description": "List of what is NOT included (strings array)"
+      "type": "json"
     },
-    "meeting_point": {
-      "type": "string"
+    "difficulty": {
+      "type": "enumeration",
+      "enum": [
+        "easy",
+        "moderate",
+        "difficult"
+      ]
     },
     "price": {
       "type": "integer"
     },
     "max_participants": {
       "type": "integer"
+    },
+    "cover_photo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "meeting_point": {
+      "type": "string"
+    },
+    "photos": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }
