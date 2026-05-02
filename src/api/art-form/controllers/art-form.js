@@ -1,3 +1,5 @@
 'use strict';
+
 const { createCoreController } = require('@strapi/strapi').factories;
-module.exports = createCoreController('api::art.form');
+
+module.exports = createCoreController('api::art-form.art-form');

@@ -1,3 +1,5 @@
 'use strict';
+
 const { createCoreService } = require('@strapi/strapi').factories;
-module.exports = createCoreService('api::art.form');
+
+module.exports = createCoreService('api::art-form.art-form');
