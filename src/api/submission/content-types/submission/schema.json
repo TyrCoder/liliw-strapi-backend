@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "submissions",
+  "info": {
+    "singularName": "submission",
+    "pluralName": "submissions",
+    "displayName": "Submission",
+    "description": "Community participation submissions from the frontend"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phone": {
+      "type": "string"
+    },
+    "message": {
+      "type": "text",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": ["feedback", "volunteer", "partnership"],
+      "default": "feedback"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["new", "reviewed", "resolved"],
+      "default": "new"
+    }
+  }
+}
