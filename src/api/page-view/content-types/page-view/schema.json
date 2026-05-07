@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "page_views",
+  "info": {
+    "singularName": "page-view",
+    "pluralName": "page-views",
+    "displayName": "Page View"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "path": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
