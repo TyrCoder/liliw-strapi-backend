@@ -20,12 +20,7 @@ module.exports = [
     config: {
       enabled: true,
       headers: '*',
-      origin: [
-        'http://localhost:3000',
-        'https://liliw.com',
-        'https://www.liliw.com',
-        /\.vercel\.app$/,
-      ],
+      origin: '*',
     },
   },
   'strapi::poweredBy',

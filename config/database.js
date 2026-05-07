@@ -1,14 +1,16 @@
 const path = require('path');
 
 module.exports = ({ env }) => {
-  const client = env('DATABASE_CLIENT', 'sqlite');
-
-  // Check if DATABASE_URL is provided (takes priority)
   const databaseUrl = env('DATABASE_URL', null);
+  // Auto-detect postgres when DATABASE_URL is provided (Render/Supabase free DB)
+  const client = env('DATABASE_CLIENT', databaseUrl ? 'postgres' : 'sqlite');
+  if (client === 'sqlite') {
+    console.warn('⚠️  Using SQLite — data is lost on Render restarts. Set DATABASE_URL + DATABASE_CLIENT=postgres for persistence.');
+  }
 
   const connections = {
     mysql: {
-      connection: databaseUrl ? databaseUrl : {
+      connection: databaseUrl ? { connectionString: databaseUrl } : {
         host: env('DATABASE_HOST', 'localhost'),
         port: env.int('DATABASE_PORT', 3306),
         database: env('DATABASE_NAME', 'strapi'),
