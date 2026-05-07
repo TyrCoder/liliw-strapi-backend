@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "event_signups",
+  "info": {
+    "singularName": "event-signup",
+    "pluralName": "event-signups",
+    "displayName": "Event Sign-up"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "event": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::event.event",
+      "inversedBy": "signups"
+    },
+    "full_name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phone": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "text"
+    },
+    "strapi_user_id": {
+      "type": "integer"
+    },
+    "username": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["pending", "confirmed", "cancelled"],
+      "default": "pending"
+    }
+  }
+}

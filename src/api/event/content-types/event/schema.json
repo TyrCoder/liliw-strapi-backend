@@ -52,9 +52,27 @@
     "is_featured": {
       "type": "boolean"
     },
+    "is_joinable": {
+      "type": "boolean",
+      "default": false
+    },
+    "max_participants": {
+      "type": "integer"
+    },
+    "cover_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
     "slug": {
       "type": "uid",
       "targetField": "title"
+    },
+    "signups": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::event-signup.event-signup",
+      "mappedBy": "event"
     }
   }
 }
