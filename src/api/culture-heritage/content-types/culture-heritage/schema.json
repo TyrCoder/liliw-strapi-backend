@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "culture_heritages",
+  "info": {
+    "singularName": "culture-heritage",
+    "pluralName": "culture-heritages",
+    "displayName": "Culture & Heritage",
+    "description": "Cultural and heritage content with title, description, video, and images"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "video": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "videos"
+      ]
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    }
+  }
+}
