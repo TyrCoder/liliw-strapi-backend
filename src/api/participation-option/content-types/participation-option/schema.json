@@ -18,18 +18,18 @@
     "description": {
       "type": "string"
     },
-    "icon": {
+    "card_type": {
       "type": "enumeration",
       "enum": ["feedback", "volunteer", "partnership"],
       "required": true
     },
-    "items": {
+    "bullet_points": {
       "type": "richtext"
     },
-    "cta_label": {
+    "button_text": {
       "type": "string"
     },
-    "sort_order": {
+    "display_order": {
       "type": "integer",
       "default": 0
     }
