@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "participation_options",
+  "info": {
+    "singularName": "participation-option",
+    "pluralName": "participation-options",
+    "displayName": "Participation Option"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "enumeration",
+      "enum": ["feedback", "volunteer", "partnership"],
+      "required": true
+    },
+    "items": {
+      "type": "json"
+    },
+    "cta_label": {
+      "type": "string"
+    },
+    "sort_order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}
