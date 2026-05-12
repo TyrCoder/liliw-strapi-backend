@@ -4,7 +4,7 @@
   "info": {
     "singularName": "participation-option",
     "pluralName": "participation-options",
-    "displayName": "Participation Option"
+    "displayName": "Participation"
   },
   "options": {
     "draftAndPublish": true
