@@ -24,7 +24,7 @@
       "required": true
     },
     "items": {
-      "type": "json"
+      "type": "text"
     },
     "cta_label": {
       "type": "string"
