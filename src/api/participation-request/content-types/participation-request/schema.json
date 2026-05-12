@@ -22,6 +22,7 @@
     "type": {
       "type": "enumeration",
       "enum": [
+        "feedback",
         "volunteer",
         "partnership",
         "cultural_mapping",
