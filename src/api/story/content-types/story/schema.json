@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "stories",
+  "info": {
+    "singularName": "story",
+    "pluralName": "stories",
+    "displayName": "Story",
+    "description": "Long-form storytelling content about Liliw's history, culture, and people"
+  },
+  "options": { "draftAndPublish": true },
+  "pluginOptions": {},
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "excerpt": { "type": "text" },
+    "content": { "type": "blocks" },
+    "cover_image": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
+    "category": {
+      "type": "enumeration",
+      "enum": ["history", "culture", "people", "nature", "food", "festival"],
+      "default": "history"
+    },
+    "author": { "type": "string", "default": "Liliw Tourism" },
+    "featured": { "type": "boolean", "default": false },
+    "slug": { "type": "uid", "targetField": "title", "required": true }
+  }
+}
