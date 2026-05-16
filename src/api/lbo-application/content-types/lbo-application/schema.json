@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lbo_applications",
+  "info": {
+    "singularName": "lbo-application",
+    "pluralName": "lbo-applications",
+    "displayName": "LBO Application",
+    "description": "Local Business Owner applications for contributor access"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "business_name": {
+      "type": "string",
+      "required": true
+    },
+    "owner_name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "text",
+      "required": true
+    },
+    "business_type": {
+      "type": "string"
+    },
+    "permit_number": {
+      "type": "string"
+    },
+    "attraction_name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["pending", "approved", "rejected"],
+      "default": "pending"
+    },
+    "notes": {
+      "type": "text"
+    },
+    "documents": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images", "files"]
+    }
+  }
+}

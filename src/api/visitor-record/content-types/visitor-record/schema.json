@@ -1,0 +1,70 @@
+{
+  "kind": "collectionType",
+  "collectionName": "visitor_records",
+  "info": {
+    "singularName": "visitor-record",
+    "pluralName": "visitor-records",
+    "displayName": "Visitor Record",
+    "description": "Monthly visitor records per attraction submitted by Local Business Owners"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "attraction_name": {
+      "type": "string",
+      "required": true
+    },
+    "attraction_id": {
+      "type": "string",
+      "required": true
+    },
+    "month": {
+      "type": "integer",
+      "required": true,
+      "min": 1,
+      "max": 12
+    },
+    "year": {
+      "type": "integer",
+      "required": true
+    },
+    "local_male": {
+      "type": "integer",
+      "default": 0
+    },
+    "local_female": {
+      "type": "integer",
+      "default": 0
+    },
+    "other_city_male": {
+      "type": "integer",
+      "default": 0
+    },
+    "other_city_female": {
+      "type": "integer",
+      "default": 0
+    },
+    "other_province_male": {
+      "type": "integer",
+      "default": 0
+    },
+    "other_province_female": {
+      "type": "integer",
+      "default": 0
+    },
+    "foreign_male": {
+      "type": "integer",
+      "default": 0
+    },
+    "foreign_female": {
+      "type": "integer",
+      "default": 0
+    },
+    "lbo_email": {
+      "type": "email",
+      "required": true
+    }
+  }
+}

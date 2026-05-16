@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lbo_change_requests",
+  "info": {
+    "singularName": "lbo-change-request",
+    "pluralName": "lbo-change-requests",
+    "displayName": "LBO Change Request",
+    "description": "Change requests submitted by Local Business Owners for their attraction listings"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "attraction_name": {
+      "type": "string",
+      "required": true
+    },
+    "attraction_id": {
+      "type": "string",
+      "required": true
+    },
+    "field_to_change": {
+      "type": "string",
+      "required": true
+    },
+    "current_value": {
+      "type": "text"
+    },
+    "requested_value": {
+      "type": "text",
+      "required": true
+    },
+    "reason": {
+      "type": "text"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["pending", "in_progress", "done", "rejected"],
+      "default": "pending"
+    },
+    "lbo_email": {
+      "type": "email",
+      "required": true
+    },
+    "lbo_name": {
+      "type": "string"
+    },
+    "editor_notes": {
+      "type": "text"
+    }
+  }
+}
