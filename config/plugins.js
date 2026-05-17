@@ -10,6 +10,8 @@ module.exports = ({ env }) => {
   }
 
   return {
+    'review-workflows': { enabled: false },
+
     upload: {
       config: {
         provider: 'cloudinary',
