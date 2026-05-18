@@ -17,7 +17,7 @@
     "photos": { "type": "media", "multiple": true, "allowedTypes": ["images"] },
     "category": {
       "type": "enumeration",
-      "enum": ["history", "culture", "people", "nature", "food", "festival"],
+      "enum": ["history", "culture", "people"],
       "default": "history"
     },
     "author": { "type": "string", "default": "Liliw Tourism" },
