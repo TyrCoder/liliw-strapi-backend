@@ -14,6 +14,7 @@
     "excerpt": { "type": "text" },
     "content": { "type": "blocks" },
     "cover_image": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
+    "photos": { "type": "media", "multiple": true, "allowedTypes": ["images"] },
     "category": {
       "type": "enumeration",
       "enum": ["history", "culture", "people", "nature", "food", "festival"],
