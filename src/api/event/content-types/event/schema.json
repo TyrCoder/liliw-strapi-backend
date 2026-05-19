@@ -39,12 +39,16 @@
     "photos": {
       "type": "media",
       "multiple": true,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "videos": {
       "type": "media",
       "multiple": true,
-      "allowedTypes": ["videos"]
+      "allowedTypes": [
+        "videos"
+      ]
     },
     "program": {
       "type": "blocks"
@@ -62,17 +66,19 @@
     "cover_image": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"]
-    },
-    "slug": {
-      "type": "uid",
-      "targetField": "title"
+      "allowedTypes": [
+        "images"
+      ]
     },
     "signups": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::event-signup.event-signup",
       "mappedBy": "event"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
     }
   }
 }
