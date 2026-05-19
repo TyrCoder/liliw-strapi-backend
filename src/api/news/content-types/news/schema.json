@@ -28,6 +28,11 @@
       "multiple": true,
       "allowedTypes": ["images"]
     },
+    "videos": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["videos"]
+    },
     "category": {
       "type": "enumeration",
       "enum": [

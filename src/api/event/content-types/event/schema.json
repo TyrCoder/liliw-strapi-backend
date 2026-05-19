@@ -39,12 +39,12 @@
     "photos": {
       "type": "media",
       "multiple": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "allowedTypes": ["images"]
+    },
+    "videos": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["videos"]
     },
     "program": {
       "type": "blocks"
