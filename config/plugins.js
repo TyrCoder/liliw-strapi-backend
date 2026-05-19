@@ -24,6 +24,11 @@ module.exports = ({ env }) => {
           uploadStream: {},
           delete: {},
         },
+        security: {
+          allowedFileTypes: ['image/*', 'video/*', 'application/pdf'],
+          allowedFileTypesError: 'Only images, videos, and PDFs are allowed.',
+          maxFileSize: 100 * 1024 * 1024, // 100MB
+        },
       },
     },
   };
