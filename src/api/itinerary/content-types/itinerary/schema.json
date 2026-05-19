@@ -1,9 +1,9 @@
 {
   "kind": "collectionType",
-  "collectionName": "iteneraries",
+  "collectionName": "itineraries",
   "info": {
-    "singularName": "itenerary",
-    "pluralName": "iteneraries",
+    "singularName": "itinerary",
+    "pluralName": "itineraries",
     "displayName": "Itinerary"
   },
   "options": {
