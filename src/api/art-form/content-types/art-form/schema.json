@@ -14,6 +14,6 @@
     "icon_emoji": { "type": "string" },
     "features": { "type": "json" },
     "sort_order": { "type": "integer", "default": 0 },
-    "image": { "type": "media", "multiple": false, "allowedTypes": ["images"] }
+    "photos": { "type": "media", "multiple": true, "allowedTypes": ["images"] }
   }
 }
