@@ -80,15 +80,15 @@
     "has_virtual_tour": {
       "type": "boolean"
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "name"
-    },
     "hotspots": {
       "type": "json"
     },
     "virtual_tour_photos": {
       "type": "json"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
     }
   }
 }

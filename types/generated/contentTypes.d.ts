@@ -552,6 +552,40 @@ export interface ApiAccommodationAccommodation
   };
 }
 
+export interface ApiArtFormArtForm extends Struct.CollectionTypeSchema {
+  collectionName: 'art_forms';
+  info: {
+    description: 'Arts and crafts of Liliw';
+    displayName: 'Art Form';
+    pluralName: 'art-forms';
+    singularName: 'art-form';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    features: Schema.Attribute.JSON;
+    icon_emoji: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::art-form.art-form'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    sort_order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   collectionName: 'articles';
   info: {
@@ -675,6 +709,48 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiBookingBooking extends Struct.CollectionTypeSchema {
+  collectionName: 'bookings';
+  info: {
+    description: 'Tour booking submissions';
+    displayName: 'Booking';
+    pluralName: 'bookings';
+    singularName: 'booking';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    bookingDate: Schema.Attribute.Date;
+    bookingRef: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    guestEmail: Schema.Attribute.Email & Schema.Attribute.Required;
+    guestName: Schema.Attribute.String & Schema.Attribute.Required;
+    guestPhone: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::booking.booking'
+    > &
+      Schema.Attribute.Private;
+    participants: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<1>;
+    publishedAt: Schema.Attribute.DateTime;
+    specialRequests: Schema.Attribute.Text;
+    status: Schema.Attribute.Enumeration<
+      ['pending', 'confirmed', 'cancelled']
+    > &
+      Schema.Attribute.DefaultTo<'pending'>;
+    totalCost: Schema.Attribute.Decimal;
+    tourId: Schema.Attribute.String;
+    tourName: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
@@ -707,6 +783,75 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCultureAspectCultureAspect
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'culture_aspects';
+  info: {
+    description: 'Cultural aspects and traditions of Liliw';
+    displayName: 'Culture Aspect';
+    pluralName: 'culture-aspects';
+    singularName: 'culture-aspect';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    details: Schema.Attribute.JSON;
+    icon_emoji: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::culture-aspect.culture-aspect'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    sort_order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCultureHeritageCultureHeritage
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'culture_heritages';
+  info: {
+    description: 'Cultural and heritage content with title, description, video, and images';
+    displayName: 'Culture & Heritage';
+    pluralName: 'culture-heritages';
+    singularName: 'culture-heritage';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Blocks;
+    images: Schema.Attribute.Media<'images', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::culture-heritage.culture-heritage'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    video: Schema.Attribute.Media<'videos'>;
+  };
+}
+
 export interface ApiDiningAndFoodDiningAndFood
   extends Struct.CollectionTypeSchema {
   collectionName: 'dining_and_foods';
@@ -728,6 +873,9 @@ export interface ApiDiningAndFoodDiningAndFood
       ['local', 'international', 'fusion', 'cafe', 'food_stall']
     >;
     description: Schema.Attribute.Blocks;
+    google_place_id: Schema.Attribute.String;
+    has_virtual_tour: Schema.Attribute.Boolean;
+    hotspots: Schema.Attribute.JSON;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -758,6 +906,45 @@ export interface ApiDiningAndFoodDiningAndFood
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    virtual_tour_photos: Schema.Attribute.JSON;
+  };
+}
+
+export interface ApiEventSignupEventSignup extends Struct.CollectionTypeSchema {
+  collectionName: 'event_signups';
+  info: {
+    displayName: 'Event Sign-up';
+    pluralName: 'event-signups';
+    singularName: 'event-signup';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    event: Schema.Attribute.Relation<'manyToOne', 'api::event.event'>;
+    full_name: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::event-signup.event-signup'
+    > &
+      Schema.Attribute.Private;
+    notes: Schema.Attribute.Text;
+    phone: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    status: Schema.Attribute.Enumeration<
+      ['pending', 'confirmed', 'cancelled']
+    > &
+      Schema.Attribute.DefaultTo<'pending'>;
+    strapi_user_id: Schema.Attribute.Integer;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    username: Schema.Attribute.String;
   };
 }
 
@@ -775,6 +962,7 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     category: Schema.Attribute.Enumeration<
       ['festival', 'cultural', 'competition', 'other']
     >;
+    cover_image: Schema.Attribute.Media<'images'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -782,21 +970,25 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     date_start: Schema.Attribute.DateTime;
     description: Schema.Attribute.Blocks;
     is_featured: Schema.Attribute.Boolean;
+    is_joinable: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'> &
       Schema.Attribute.Private;
-    photos: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    max_participants: Schema.Attribute.Integer;
+    photos: Schema.Attribute.Media<'images', true>;
     program: Schema.Attribute.Blocks;
     publishedAt: Schema.Attribute.DateTime;
+    signups: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::event-signup.event-signup'
+    >;
     slug: Schema.Attribute.UID<'title'>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     venue: Schema.Attribute.String;
+    videos: Schema.Attribute.Media<'videos', true>;
   };
 }
 
@@ -869,6 +1061,44 @@ export interface ApiFeedbackFeedback extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiGalleryItemGalleryItem extends Struct.CollectionTypeSchema {
+  collectionName: 'gallery_items';
+  info: {
+    description: 'Photos for the media gallery, organized by category';
+    displayName: 'Gallery Item';
+    pluralName: 'gallery-items';
+    singularName: 'gallery-item';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Schema.Attribute.Enumeration<
+      ['heritage', 'events', 'nature', 'culture', 'food', 'community']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'heritage'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::gallery-item.gallery-item'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    sort_order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -921,8 +1151,10 @@ export interface ApiHeritageSiteHeritageSite
     description: Schema.Attribute.Blocks;
     distance_from_center: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'e.g., "2.5 km from town center"'>;
+    google_place_id: Schema.Attribute.String;
     has_virtual_tour: Schema.Attribute.Boolean;
     history: Schema.Attribute.Blocks;
+    hotspots: Schema.Attribute.JSON;
     is_featured: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -955,40 +1187,165 @@ export interface ApiHeritageSiteHeritageSite
     virtual_tour: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
+    virtual_tour_photos: Schema.Attribute.JSON;
   };
 }
 
-export interface ApiIteneraryItenerary extends Struct.CollectionTypeSchema {
-  collectionName: 'iteneraries';
+export interface ApiHeroSlideHeroSlide extends Struct.CollectionTypeSchema {
+  collectionName: 'hero_slides';
   info: {
-    displayName: 'Itenerary';
-    pluralName: 'iteneraries';
-    singularName: 'itenerary';
+    description: 'Homepage hero carousel slides';
+    displayName: 'Hero Slide';
+    pluralName: 'hero-slides';
+    singularName: 'hero-slide';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    cover_photo: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    cta_link: Schema.Attribute.String;
+    cta_text: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
+    is_active: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hero-slide.hero-slide'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    sort_order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiItineraryItinerary extends Struct.CollectionTypeSchema {
+  collectionName: 'itineraries';
+  info: {
+    displayName: 'Itinerary';
+    pluralName: 'itineraries';
+    singularName: 'itinerary';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    cover_photo: Schema.Attribute.Media<'images'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Blocks;
+    difficulty: Schema.Attribute.Enumeration<['easy', 'moderate', 'difficult']>;
     duration: Schema.Attribute.Enumeration<
       ['half-day', 'one-day', 'two-day', 'heritage', 'foodie', 'family']
     >;
+    highlights: Schema.Attribute.JSON;
+    included: Schema.Attribute.JSON;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::itenerary.itenerary'
+      'api::itinerary.itinerary'
+    > &
+      Schema.Attribute.Private;
+    max_participants: Schema.Attribute.Integer;
+    meeting_point: Schema.Attribute.String;
+    not_included: Schema.Attribute.JSON;
+    photos: Schema.Attribute.Media<'images', true>;
+    price: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'>;
+    stops: Schema.Attribute.Blocks;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLboApplicationLboApplication
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'lbo_applications';
+  info: {
+    description: 'Local Business Owner applications for contributor access';
+    displayName: 'LBO Application';
+    pluralName: 'lbo-applications';
+    singularName: 'lbo-application';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    address: Schema.Attribute.Text & Schema.Attribute.Required;
+    attraction_name: Schema.Attribute.String;
+    business_name: Schema.Attribute.String & Schema.Attribute.Required;
+    business_type: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    documents: Schema.Attribute.Media<'images' | 'files', true>;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::lbo-application.lbo-application'
+    > &
+      Schema.Attribute.Private;
+    notes: Schema.Attribute.Text;
+    owner_name: Schema.Attribute.String & Schema.Attribute.Required;
+    permit_number: Schema.Attribute.String;
+    phone: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    status: Schema.Attribute.Enumeration<['pending', 'approved', 'rejected']> &
+      Schema.Attribute.DefaultTo<'pending'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLboChangeRequestLboChangeRequest
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'lbo_change_requests';
+  info: {
+    description: 'Change requests submitted by Local Business Owners for their attraction listings';
+    displayName: 'LBO Change Request';
+    pluralName: 'lbo-change-requests';
+    singularName: 'lbo-change-request';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    attraction_id: Schema.Attribute.String & Schema.Attribute.Required;
+    attraction_name: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    current_value: Schema.Attribute.Text;
+    editor_notes: Schema.Attribute.Text;
+    field_to_change: Schema.Attribute.String & Schema.Attribute.Required;
+    lbo_email: Schema.Attribute.Email & Schema.Attribute.Required;
+    lbo_name: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::lbo-change-request.lbo-change-request'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<'title'>;
-    stops: Schema.Attribute.JSON;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
+    reason: Schema.Attribute.Text;
+    requested_value: Schema.Attribute.Text & Schema.Attribute.Required;
+    status: Schema.Attribute.Enumeration<
+      ['pending', 'in_progress', 'done', 'rejected']
+    > &
+      Schema.Attribute.DefaultTo<'pending'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1010,17 +1367,82 @@ export interface ApiNewsNews extends Struct.CollectionTypeSchema {
       ['advisory', 'announcement', 'press_release']
     >;
     content: Schema.Attribute.Blocks;
-    cover_photo: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
+    cover_photo: Schema.Attribute.Media<'images'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::news.news'> &
       Schema.Attribute.Private;
+    photos: Schema.Attribute.Media<'images', true>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'title'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    videos: Schema.Attribute.Media<'videos', true>;
+  };
+}
+
+export interface ApiPageViewPageView extends Struct.CollectionTypeSchema {
+  collectionName: 'page_views';
+  info: {
+    displayName: 'Page View';
+    pluralName: 'page-views';
+    singularName: 'page-view';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::page-view.page-view'
+    > &
+      Schema.Attribute.Private;
+    path: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiParticipationOptionParticipationOption
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'participation_options';
+  info: {
+    displayName: 'Participation';
+    pluralName: 'participation-options';
+    singularName: 'participation-option';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bullet_points: Schema.Attribute.RichText;
+    button_text: Schema.Attribute.String;
+    card_type: Schema.Attribute.Enumeration<
+      ['feedback', 'volunteer', 'partnership']
+    > &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.String;
+    display_order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::participation-option.participation-option'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1054,8 +1476,88 @@ export interface ApiParticipationRequestParticipationRequest
     message: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
     type: Schema.Attribute.Enumeration<
-      ['volunteer', 'partnership', 'cultural_mapping', 'artisan_listing']
+      [
+        'feedback',
+        'volunteer',
+        'partnership',
+        'cultural_mapping',
+        'artisan_listing',
+      ]
     >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiStoryStory extends Struct.CollectionTypeSchema {
+  collectionName: 'stories';
+  info: {
+    description: "Long-form storytelling content about Liliw's history, culture, and people";
+    displayName: 'Story';
+    pluralName: 'stories';
+    singularName: 'story';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    author: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Liliw Tourism'>;
+    category: Schema.Attribute.Enumeration<['history', 'culture', 'people']> &
+      Schema.Attribute.DefaultTo<'history'>;
+    content: Schema.Attribute.Blocks;
+    cover_image: Schema.Attribute.Media<'images'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    excerpt: Schema.Attribute.Text;
+    featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::story.story'> &
+      Schema.Attribute.Private;
+    photos: Schema.Attribute.Media<'images', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSubmissionSubmission extends Struct.CollectionTypeSchema {
+  collectionName: 'submissions';
+  info: {
+    description: 'Community participation submissions from the frontend';
+    displayName: 'Submission';
+    pluralName: 'submissions';
+    singularName: 'submission';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::submission.submission'
+    > &
+      Schema.Attribute.Private;
+    message: Schema.Attribute.Text & Schema.Attribute.Required;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    phone: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    status: Schema.Attribute.Enumeration<['new', 'reviewed', 'resolved']> &
+      Schema.Attribute.DefaultTo<'new'>;
+    type: Schema.Attribute.Enumeration<
+      ['feedback', 'volunteer', 'partnership']
+    > &
+      Schema.Attribute.DefaultTo<'feedback'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1086,7 +1588,9 @@ export interface ApiTouristSpotTouristSpot extends Struct.CollectionTypeSchema {
       ['easy', 'moderate', 'difficult']
     >;
     entrance_fee: Schema.Attribute.String;
+    google_place_id: Schema.Attribute.String;
     has_virtual_tour: Schema.Attribute.Boolean;
+    hotspots: Schema.Attribute.JSON;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1120,6 +1624,59 @@ export interface ApiTouristSpotTouristSpot extends Struct.CollectionTypeSchema {
     virtual_tour: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
+    virtual_tour_photos: Schema.Attribute.JSON;
+  };
+}
+
+export interface ApiVisitorRecordVisitorRecord
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'visitor_records';
+  info: {
+    description: 'Monthly visitor records per attraction submitted by Local Business Owners';
+    displayName: 'Visitor Record';
+    pluralName: 'visitor-records';
+    singularName: 'visitor-record';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    attraction_id: Schema.Attribute.String & Schema.Attribute.Required;
+    attraction_name: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    foreign_female: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    foreign_male: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    lbo_email: Schema.Attribute.Email & Schema.Attribute.Required;
+    local_female: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    local_male: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::visitor-record.visitor-record'
+    > &
+      Schema.Attribute.Private;
+    month: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 12;
+          min: 1;
+        },
+        number
+      >;
+    other_city_female: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    other_city_male: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    other_province_female: Schema.Attribute.Integer &
+      Schema.Attribute.DefaultTo<0>;
+    other_province_male: Schema.Attribute.Integer &
+      Schema.Attribute.DefaultTo<0>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    year: Schema.Attribute.Integer & Schema.Attribute.Required;
   };
 }
 
@@ -1637,20 +2194,34 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
       'api::accommodation.accommodation': ApiAccommodationAccommodation;
+      'api::art-form.art-form': ApiArtFormArtForm;
       'api::article.article': ApiArticleArticle;
       'api::artisan.artisan': ApiArtisanArtisan;
       'api::author.author': ApiAuthorAuthor;
+      'api::booking.booking': ApiBookingBooking;
       'api::category.category': ApiCategoryCategory;
+      'api::culture-aspect.culture-aspect': ApiCultureAspectCultureAspect;
+      'api::culture-heritage.culture-heritage': ApiCultureHeritageCultureHeritage;
       'api::dining-and-food.dining-and-food': ApiDiningAndFoodDiningAndFood;
+      'api::event-signup.event-signup': ApiEventSignupEventSignup;
       'api::event.event': ApiEventEvent;
       'api::faq.faq': ApiFaqFaq;
       'api::feedback.feedback': ApiFeedbackFeedback;
+      'api::gallery-item.gallery-item': ApiGalleryItemGalleryItem;
       'api::global.global': ApiGlobalGlobal;
       'api::heritage-site.heritage-site': ApiHeritageSiteHeritageSite;
-      'api::itenerary.itenerary': ApiIteneraryItenerary;
+      'api::hero-slide.hero-slide': ApiHeroSlideHeroSlide;
+      'api::itinerary.itinerary': ApiItineraryItinerary;
+      'api::lbo-application.lbo-application': ApiLboApplicationLboApplication;
+      'api::lbo-change-request.lbo-change-request': ApiLboChangeRequestLboChangeRequest;
       'api::news.news': ApiNewsNews;
+      'api::page-view.page-view': ApiPageViewPageView;
+      'api::participation-option.participation-option': ApiParticipationOptionParticipationOption;
       'api::participation-request.participation-request': ApiParticipationRequestParticipationRequest;
+      'api::story.story': ApiStoryStory;
+      'api::submission.submission': ApiSubmissionSubmission;
       'api::tourist-spot.tourist-spot': ApiTouristSpotTouristSpot;
+      'api::visitor-record.visitor-record': ApiVisitorRecordVisitorRecord;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

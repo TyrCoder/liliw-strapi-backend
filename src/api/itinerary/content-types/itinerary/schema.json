@@ -62,19 +62,19 @@
         "images"
       ]
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "title"
-    },
-    "meeting_point": {
-      "type": "string"
-    },
     "photos": {
       "type": "media",
       "multiple": true,
       "allowedTypes": [
         "images"
       ]
+    },
+    "meeting_point": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
     }
   }
 }

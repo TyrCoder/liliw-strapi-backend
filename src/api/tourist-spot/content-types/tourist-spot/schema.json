@@ -56,11 +56,18 @@
         "audios"
       ]
     },
-    "has_virtual_tour": {
-      "type": "boolean"
-    },
     "entrance_fee": {
       "type": "string"
+    },
+    "place_type": {
+      "type": "enumeration",
+      "enum": [
+        "natural",
+        "historical",
+        "shopping",
+        "food",
+        "recreation"
+      ]
     },
     "category": {
       "type": "enumeration",
@@ -75,6 +82,9 @@
     "opening_hours": {
       "type": "string"
     },
+    "has_virtual_tour": {
+      "type": "boolean"
+    },
     "virtual_tour": {
       "type": "media",
       "multiple": false,
@@ -85,25 +95,15 @@
         "audios"
       ]
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "name"
-    },
-    "place_type": {
-      "type": "enumeration",
-      "enum": [
-        "natural",
-        "historical",
-        "shopping",
-        "food",
-        "recreation"
-      ]
+    "virtual_tour_photos": {
+      "type": "json"
     },
     "hotspots": {
       "type": "json"
     },
-    "virtual_tour_photos": {
-      "type": "json"
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
     }
   }
 }
