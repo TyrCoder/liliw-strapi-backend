@@ -12,7 +12,7 @@
     "name": { "type": "string", "required": true },
     "description": { "type": "text" },
     "icon_emoji": { "type": "string" },
-    "features": { "type": "json" },
+    "features": { "type": "richtext" },
     "sort_order": { "type": "integer", "default": 0 },
     "photos": { "type": "media", "multiple": true, "allowedTypes": ["images"] }
   }
